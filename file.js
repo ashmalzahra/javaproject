@@ -10,23 +10,32 @@ function getComputerChoice(){
     }
 }
 
+function caseSensitive (playerSelection){
+    return (playerSelection = playerSelection.AtChar()[0].toUpperCase() + playerSelection.slice(1).toLowerCase());
+}
+
 
 function playRound(playerSelection, computerSelection){
-    if (playerSelection === "Rock" && computerSelection === "Paper"){
-    return ("You lose! Paper beats Rock");}
-    elseif (playerSelection === "Rock" && computerSelection === "Scissor"){
-    return ("You win! Rock beats scissors");}
-    elseif (playerSelection === "Paper" && computerSelection === "Rock" ){
-    return ("You win! Paper beats Rock"); }
-    elseif (playerSelection === "Paper" && computerSelection === "Scissor"){
-    return ("You lose! Scissor beats Paper");}
-    
-    elseif(playerSelection === "Scissor" && computerSelection === "Paper"){
-    return ("You win! Scissor beats Paper");
+    if (playerSelection === computerSelection){
+        return "This is a tie!";
     }
-    elseif (playerSelection === "Scissor" && computerSelection === "Rock"){
-    return ("You lose! Rock beats Scissor");
+    if (playerSelection === "Rock") {
+        if (computerSelection === "Paper"){
+            return "You lose! Paper beats Rock";
+        }
+        else return "You win! Rock beats Scissor";
     }
+    if (playerSelection === "Paper"){
+        if (computerSelection === "Scissor"){
+            return "You lose! Scissor beats Paper";
+        }
+        else return "You win! Paper beats Rock";
     }
-    
+    if (playerSelection === "Scissor"){
+        if (computerSelection === "Rock"){
+            return "You lose! Rock beats Scissor";
+        }
+        else return "You win! Scissor beats Paper";
+    }
+}
 
