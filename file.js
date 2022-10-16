@@ -19,21 +19,21 @@ function playRound(playerSelection, computerSelection){
     }
     if (lowerCasePlayerSelection === "rock") {
         if (computerSelection === "paper"){
-            return "You lose! Paper beats Rock";
+            return "You lose!";
         }
-        else return "You win! Rock beats Scissor";
+        else return "You win!";
     }
     if (lowerCasePlayerSelection === "paper"){
         if (computerSelection === "scissor"){
-            return "You lose! Scissor beats Paper";
+            return "You lose!";
         }
-        else return "You win! Paper beats Rock";
+        else return "You win!";
     }
     if (lowerCasePlayerSelection === "scissor"){
         if (computerSelection === "rock"){
-            return "You lose! Rock beats Scissor";
+            return "You lose!";
         }
-        else return "You win! Scissor beats Paper";
+        else return "You win!";
     }
 
 }
@@ -43,22 +43,29 @@ const computerSelection = getComputerChoice();
 const playerSelection = "Rock";
 console.log(playRound(playerSelection, computerSelection));
 
-        
+    
+let compScore = 0;
+let playerScore = 0;
+
 function game() {
     for (let i= 1; i <= 5; i++){
-        playRound();
-        let playerSelection = prompt(); 
-        if (  result === "You win" ){
-            playerScore ++;
-            console.log(playerScore);
-        }
-        else if (result === "You lost"){
+        const playerSelection = prompt(); 
+        if (playRound(playerSelection, computerSelection) === "You lose!"){
             compScore ++;
-            console.log(compScore);
+            console.log("This is a score for computer, you lost");
         }
-        ;
+        else if (playRound(playerSelection, computerSelection) === "You win!"){
+            playerScore ++;
+            console.log("This is your score, computer lost");
+        }
+        else if (playRound(playerSelection, computerSelection) === "This is a tie!"){
+            console.log("It's a tie");
+        }
     }
+    
+   
 }
+console.log(game());
 
 
 
