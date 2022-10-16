@@ -49,7 +49,7 @@ let playerScore = 0;
 
 function game() {
     for (let i= 1; i <= 5; i++){
-        const playerSelection = prompt(); 
+        const playerSelection = prompt("Enter Rock, Paper, or Scissor!"); 
         if (playRound(playerSelection, computerSelection) === "You lose!"){
             compScore ++;
             console.log("This is a score for computer, you lost");
@@ -62,7 +62,15 @@ function game() {
             console.log("It's a tie");
         }
     }
-    
+    if (compScore == playerScore){
+        console.log("This round is a tie, play again!");
+    }
+    else if (compScore > playerScore){
+        console.log("You lost this round, computer won!");
+    }
+    else if (playerScore > compScore){
+        console.log("You won this round, computer lost!");
+    }
    
 }
 console.log(game());
