@@ -12,15 +12,19 @@ function getComputerChoice(){
 
 
 const rockBtn = document.querySelector('#rock');
-
 const paperBtn = document.querySelector('#paper');
-
 const scissorBtn = document.querySelector('#scissor');
-
 const outcomeDiv = document.querySelector('#outcome');
+const playerScoreSpan = document.querySelector('.player-score');
+const compScoreSpan = document.querySelector('.computer-score');
 
 let compScore = 0;
 let playerScore = 0;
+
+const currentScore = (playerScore, compScore) =>{
+playerScoreSpan.innerText =  `Player Score: ${playerScore}`;
+compScoreSpan.innerText = `Computer Score: ${compScore}`;
+}
 
 
 
@@ -86,6 +90,7 @@ rockBtn.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     const playerSelection = "rock";
     playRound(playerSelection, computerSelection)
+    currentScore(playerScore, compScore)
     checkForWinner(playerScore, compScore)
 });
 
@@ -93,6 +98,7 @@ paperBtn.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     const playerSelection = "paper";
     playRound(playerSelection, computerSelection)
+    currentScore(playerScore, compScore)
     checkForWinner(playerScore, compScore)
 });
 
@@ -100,6 +106,7 @@ scissorBtn.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     const playerSelection = "scissor";
     playRound(playerSelection, computerSelection)
+    currentScore(playerScore, compScore)
     checkForWinner(playerScore, compScore)
 });
 
