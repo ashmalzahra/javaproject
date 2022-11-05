@@ -7,49 +7,108 @@ function getComputerChoice(){
             return "paper";
         case 2: 
             return "scissor";
-    }
-}
+    };
+};
+
+
+const rockBtn = document.querySelector('#rock');
+
+const paperBtn = document.querySelector('#paper');
+
+const scissorBtn = document.querySelector('#scissor');
+
+const outcomeDiv = document.querySelector('#outcome');
+
+let compScore = 0;
+let playerScore = 0;
 
 
 
 function playRound(playerSelection, computerSelection){
-    const lowerCasePlayerSelection = playerSelection.toLowerCase();
-    if (lowerCasePlayerSelection === computerSelection){
-        return "This is a tie!";
+    if (playerSelection === computerSelection){
+        const p = document.createElement('p');
+        p.innerText =  "This is a tie!";
+        outcomeDiv.appendChild(p);
     }
-    if (lowerCasePlayerSelection === "rock") {
+    if (playerSelection === "rock") {
         if (computerSelection === "paper"){
-            return "You lose!";
+            compScore++
+            const p = document.createElement('p');
+            p.innerText = "You lose!";
+            outcomeDiv.appendChild(p);
         }
-        else return "You win!";
+        else { playerScore++
+        const p = document.createElement('p');
+        p.innerText =  "You win!";
+        outcomeDiv.appendChild(p);}
     }
-    if (lowerCasePlayerSelection === "paper"){
+    if (playerSelection === "paper"){
         if (computerSelection === "scissor"){
-            return "You lose!";
+            compScore++
+            const p = document.createElement('p');
+            p.innerText =  "You lose!";
+            outcomeDiv.appendChild(p);
         }
-        else return "You win!";
+        else {playerScore++
+        const p = document.createElement('p');
+        p.innerText =  "You win!";
+        outcomeDiv.appendChild(p);}
     }
-    if (lowerCasePlayerSelection === "scissor"){
+    if (playerSelection === "scissor"){
         if (computerSelection === "rock"){
-            return "You lose!";
+            compScore++
+            const p = document.createElement('p');
+            p.innerText =  "You lose!";
+            outcomeDiv.appendChild(p);
         }
-        else return "You win!";
+        else { playerScore++
+        const p = document.createElement('p');
+        p.innerText = "You win!";
+        outcomeDiv.appendChild(p);}
     }
 
-}
+};
 
-
-const computerSelection = getComputerChoice();
-const playerSelection = "Rock";
-console.log(playRound(playerSelection, computerSelection));
-
+const checkForWinner = (playerScore, compScore) => {
+    if (playerScore === 5){
+        const h2 = document.createElement('h2');
+        h2.innerText = `You won! You beat computer from ${playerScore} to ${compScore}`;
+        outcomeDiv.appendChild(h2);}
     
-let compScore = 0;
-let playerScore = 0;
+    else if (compScore === 5){
+        const h2 = document.createElement('h2');
+        h2.innerText = `You lost! Computer beat you from ${compScore} to ${playerScore}`;
+        outcomeDiv.appendChild(h2);
+    }
+};
 
-function game() {
+rockBtn.addEventListener('click', () => {
+    const computerSelection = getComputerChoice();
+    const playerSelection = "rock";
+    playRound(playerSelection, computerSelection)
+    checkForWinner(playerScore, compScore)
+});
+
+paperBtn.addEventListener('click', () => {
+    const computerSelection = getComputerChoice();
+    const playerSelection = "paper";
+    playRound(playerSelection, computerSelection)
+    checkForWinner(playerScore, compScore)
+});
+
+scissorBtn.addEventListener('click', () => {
+    const computerSelection = getComputerChoice();
+    const playerSelection = "scissor";
+    playRound(playerSelection, computerSelection)
+    checkForWinner(playerScore, compScore)
+});
+
+
+
+
+/*function game() {
     for (let i= 1; i <= 5; i++){
-        const playerSelection = prompt("Enter Rock, Paper, or Scissor!"); 
+        
         if (playRound(playerSelection, computerSelection) === "You lose!"){
             compScore ++;
             console.log("This is a score for computer, you lost");
@@ -72,8 +131,12 @@ function game() {
         console.log("You won this round, computer lost!");
     }
    
-}
+};
 console.log(game());
 
+
+
+
+*/
 
 
